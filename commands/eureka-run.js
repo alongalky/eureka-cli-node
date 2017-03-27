@@ -1,20 +1,23 @@
 const program = require('commander')
 const tasks = require('./tasks/tasks')
 
-let command = null
-let machine = null
+let command
+let machine
+let output
 
 program
-  .option('-o, --output <output-folder>', 'Output folder to save after task ends')
-  .arguments('<machine> <cmd...>')
-  .action((m, cmd) => {
-    command = cmd
+  .arguments('<machine> <output-folder> <cmd...>')
+  .action((m, o, cmd) => {
     machine = m
+    output = o
+    command = cmd
   })
   .parse(process.argv)
 
-tasks.runTask({
+const task = {
   machine,
-  output: program.output,
+  output,
   command
-})
+}
+
+tasks.runTask(task)

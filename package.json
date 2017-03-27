@@ -18,5 +18,8 @@
   "dependencies": {
     "cli-table": "^0.3.1",
     "commander": "^2.9.0"
+  },
+  "bin": {
+    "eureka": "./commands/eureka.js"
   }
 }
