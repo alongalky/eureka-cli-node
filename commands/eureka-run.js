@@ -14,10 +14,19 @@ program
   })
   .parse(process.argv)
 
-const task = {
-  machine,
-  output,
-  command
+if (!machine || !output || !command) {
+  program.help()
+} else {
+  const task = {
+    machine,
+    output,
+    command
+  }
+
+  tasks.runTask(task)
+    .then(response => console.log(response))
+    .catch(err => {
+      console.error(err.toString())
+    })
 }
 
-tasks.runTask(task)

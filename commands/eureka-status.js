@@ -1,6 +1,6 @@
 const program = require('commander')
 const tasks = require('./tasks/tasks')
-var Table = require('cli-table')
+const Table = require('cli-table')
 
 program
   .option('-m, --machine <type>', 'Show tasks for a specific machine')
@@ -13,8 +13,10 @@ tasks.getTasks(program.machine)
     })
 
     for (const task of response) {
-      table.push([task.machine, task.id, task.status, task.command])
+      table.push([task.machine || '', task.id || '', task.status || '', task.command || ''])
     }
-    
-    console.log(table.toString());
+
+    console.log(table.toString())
+  }).catch(err => {
+    console.error(err)
   })
