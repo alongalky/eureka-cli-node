@@ -3,5 +3,9 @@ module.exports = {
     "plugins": [
         "standard",
         "promise"
-    ]
-};
+    ],
+    "env": {
+        "mocha": true,
+        "node": true
+    }
+}

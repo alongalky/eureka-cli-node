@@ -1,5 +1,10 @@
 const program = require('commander')
-const tasks = require('./tasks/tasks')
+const config = require('../eureka.config')
+const axios = require('axios')
+const tasks = require('./tasks/tasks')({
+  put: axios.put,
+  config
+})
 
 let command
 let machine
@@ -23,6 +28,7 @@ if (!machine || !output || !command) {
     command
   }
 
+  console.log(`Running ${machine} with command ${'"' + command.join(' ') + '"'}, output folder is ${output}`)
   tasks.runTask(task)
     .then(response => console.log(response))
     .catch(err => {

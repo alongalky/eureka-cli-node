@@ -1,9 +1,7 @@
-const axios = require('axios')
 const url = require('url')
-const config = require('../../eureka.config')
 
-module.exports = {
+module.exports = ({get, config}) => ({
   getMachines: () =>
-    axios.get(url.resolve(config.endpoint, '/api/machines'))
+    get(url.resolve(config.endpoint, '/api/machines'))
       .then(response => response.data)
-}
+})

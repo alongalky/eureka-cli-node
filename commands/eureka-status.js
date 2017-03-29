@@ -1,5 +1,10 @@
 const program = require('commander')
-const tasks = require('./tasks/tasks')
+const config = require('../eureka.config')
+const axios = require('axios')
+const tasks = require('./tasks/tasks')({
+  get: axios.get,
+  config
+})
 const Table = require('cli-table')
 
 program

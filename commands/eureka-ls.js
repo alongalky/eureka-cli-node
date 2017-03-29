@@ -1,5 +1,9 @@
-const program = require('commander')
-const machines = require('./machines/machines')
+const config = require('../eureka.config')
+const axios = require('axios')
+const machines = require('./machines/machines')({
+  get: axios.get,
+  config
+})
 var Table = require('cli-table')
 
 machines.getMachines()
