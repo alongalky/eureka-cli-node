@@ -13,10 +13,12 @@ program
   .parse(process.argv)
 
 keys.getKeys({key: program.keyId, secret: program.keySecret})
-  .then(key => tasks({
-    get: axiosAuth(key).get,
-    config
-  }).getTasks(program.machine))
+  .then(key => {
+    return tasks({
+      get: axiosAuth(key).get,
+      config
+    }).getTasks(program.machine)
+  })
   .then(response => {
     const table = new Table({
       head: ['Task Name', 'Machine', 'Status', 'Command', 'Tier', 'Start Time']

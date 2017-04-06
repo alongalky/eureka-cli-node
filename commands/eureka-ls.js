@@ -13,10 +13,11 @@ program
 
 // Verify keys:
 keys.getKeys({key: program.keyId, secret: program.keySecret})
-  .then(key => machines({
-    get: axiosAuth(key).get,
-    config
-  }).getMachines())
+  .then(key => {
+    return machines({
+      get: axiosAuth(key).get,
+      config}).getMachines()
+  })
   .then(response => {
     const table = new Table({
       head: ['Machine Name']
