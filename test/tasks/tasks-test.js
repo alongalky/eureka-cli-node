@@ -52,7 +52,7 @@ describe('tasks', () => {
     })
 
     it('calls the correct url', done => {
-      const expectedUrl = 'http://fake.com/api/tasks/machina'
+      const expectedUrl = 'http://fake.com/api/tasks'
       runTask(args)
         .then(response => {
           sinon.assert.calledWith(put, expectedUrl)
