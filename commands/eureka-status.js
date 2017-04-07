@@ -1,24 +1,17 @@
 const program = require('commander')
 const config = require('../eureka.config')
-const axiosAuth = require('./keys/axios-authenticated')
-const tasks = require('./tasks/tasks')
+const axiosAuth = require('./auth/axios-authenticated')(config)
+const tasks = require('./tasks/tasks')({
+  get: axiosAuth.get,
+  config
+})
 const Table = require('cli-table')
-const fs = require('fs')
-const keys = require('./keys/keys')({fs})
 
 program
   .option('-m, --machine <type>', 'Show tasks for a specific machine')
-  .option('-k, --key-id <key-id>', 'Key ID for Eureka account')
-  .option('-s, --key-secret <key-secret>', 'Matching secret for Eureka account')
   .parse(process.argv)
 
-keys.getKeys({key: program.keyId, secret: program.keySecret})
-  .then(key => {
-    return tasks({
-      get: axiosAuth(key).get,
-      config
-    }).getTasks(program.machine)
-  })
+tasks.getTasks(program.machine)
   .then(response => {
     const table = new Table({
       head: ['Task Name', 'Machine', 'Status', 'Command', 'Tier', 'Start Time']
