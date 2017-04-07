@@ -1,7 +1,7 @@
 const url = require('url')
 const querystring = require('querystring')
 
-module.exports = ({get, put, config}) => {
+module.exports = ({get, post, config}) => {
   const address = url.resolve(config.endpoint, `/api/accounts/${config.account}/tasks`)
 
   return {
@@ -18,7 +18,7 @@ module.exports = ({get, put, config}) => {
         tier
       }
 
-      return put(address, body)
+      return post(address, body)
         .then(response => 'Response: Task queued successfully')
     }
   }

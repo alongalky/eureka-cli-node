@@ -2,7 +2,7 @@ const program = require('commander')
 const config = require('../eureka.config')
 const axiosAuth = require('./auth/axios-authenticated')(config)
 const tasks = require('./tasks/tasks')({
-  put: axiosAuth.put,
+  post: axiosAuth.post,
   config
 })
 const uuid = require('uuid')

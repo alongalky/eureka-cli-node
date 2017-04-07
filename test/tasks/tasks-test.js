@@ -40,8 +40,8 @@ describe('tasks', () => {
     })
   })
   describe('runTask', () => {
-    const put = sinon.stub()
-    const runTask = tasks({put, config}).runTask
+    const post = sinon.stub()
+    const runTask = tasks({post, config}).runTask
 
     const args = ({
       machine: 'machina',
@@ -50,15 +50,15 @@ describe('tasks', () => {
     })
 
     beforeEach(() => {
-      put.reset()
-      put.returns(Promise.resolve({}))
+      post.reset()
+      post.returns(Promise.resolve({}))
     })
 
     it('calls the correct url', done => {
       const expectedUrl = 'http://fake.com/api/accounts/fake-account/tasks'
       runTask(args)
         .then(response => {
-          sinon.assert.calledWith(put, expectedUrl)
+          sinon.assert.calledWith(post, expectedUrl)
           done()
         }).catch(err => done(err))
     })
