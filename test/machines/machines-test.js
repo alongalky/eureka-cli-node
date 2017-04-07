@@ -2,7 +2,10 @@ const sinon = require('sinon')
 const machines = require('../../commands/machines/machines')
 const assert = require('chai').assert
 const config = {
-  endpoint: 'http://fake.com'
+  endpoint: 'http://fake.com',
+  key: 'Key',
+  secret: 'Secret',
+  account: 'fake-account'
 }
 
 describe('machines', () => {
@@ -28,7 +31,7 @@ describe('machines', () => {
         }).catch(err => done(err))
     })
     it('calls the correct url', done => {
-      const expectedUrl = 'http://fake.com/api/machines'
+      const expectedUrl = 'http://fake.com/api/accounts/fake-account/machines'
       getMachines()
         .then(response => {
           sinon.assert.calledWith(get, expectedUrl)
