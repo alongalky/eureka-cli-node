@@ -1,7 +1,7 @@
 module.exports = {
   key: 'Key',
   secret: 'Secret',
-  account: 'eb2e695df97f4b5e83c1074261d3bb3e',
+  account: '93506318-da47-499e-a6f4-c43bdc1f1eae',
 
   // DEV:
   endpoint: 'http://eureka-dev.us-west-2.elasticbeanstalk.com'
