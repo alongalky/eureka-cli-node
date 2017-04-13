@@ -16,7 +16,7 @@ program
   .action((m, o, cmd) => {
     machine = m
     output = o
-    command = cmd
+    command = cmd.join(' ')
   })
   .parse(process.argv)
 
@@ -27,15 +27,16 @@ if (!machine || !output || !command) {
     machine,
     output,
     command,
-    tier: 'normal',
+    tier: 'tiny',
     taskName: 'task' + uuid.v4()
   }
 
-  console.log(`Running ${machine} with command ${'"' + command.join(' ') + '"'}, output folder is ${output}`)
+  console.log(`Running ${machine} with command ${command}, output folder is ${output}`)
   tasks.runTask(task)
   .then(response => {
     console.log(response)
   }).catch(err => {
+    console.log(err.response.data || '')
     console.error(err.toString())
   })
 }
