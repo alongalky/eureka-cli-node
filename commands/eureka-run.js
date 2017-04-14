@@ -27,7 +27,7 @@ if (!machine || !output || !command) {
     machine,
     output,
     command,
-    tier: 'tiny',
+    tier: 'n1-standard-1',
     taskName: 'task' + uuid.v4()
   }
 
