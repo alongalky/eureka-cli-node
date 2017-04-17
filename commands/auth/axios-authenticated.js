@@ -1,7 +1,6 @@
 const axios = require('axios')
-const fs = require('fs')
 
-module.exports = config => {
+module.exports = ({ fs, config }) => {
   const readTokenFile = () => {
     if (fs.existsSync(config.tokenfile)) {
       const token = fs.readFileSync(config.tokenfile) || ''
@@ -49,6 +48,8 @@ module.exports = config => {
       return Promise.reject(error)
     }
   })
+
+  axiosAuth.resetAttemptCount = () => { attemptCount = 0 }
 
   return axiosAuth
 }

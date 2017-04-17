@@ -1,5 +1,6 @@
 const config = require('../eureka.config')
-const axiosAuth = require('./auth/axios-authenticated')(config)
+const fs = require('fs')
+const axiosAuth = require('./auth/axios-authenticated')({ config, fs })
 const Table = require('cli-table')
 const machines = require('./machines/machines')({
   get: axiosAuth.get,
