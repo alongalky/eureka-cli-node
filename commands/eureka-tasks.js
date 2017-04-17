@@ -1,4 +1,3 @@
-const program = require('commander')
 const config = require('../eureka.config')
 const axiosAuth = require('./auth/axios-authenticated')(config)
 const tasks = require('./tasks/tasks')({
@@ -9,11 +8,7 @@ const Table = require('cli-table')
 const moment = require('moment')
 const sprintf = require('sprintf-js').sprintf
 
-program
-  .option('-m, --machine <type>', 'Show tasks for a specific machine')
-  .parse(process.argv)
-
-tasks.getTasks(program.machine)
+tasks.getTasks()
   .then(response => {
     const table = new Table({
       head: ['Task Name', 'Machine', 'Status', 'Command', 'Tier', 'Start Time', 'Cost', 'Duration']
