@@ -5,15 +5,15 @@ module.exports = ({get, post, config}) => {
   const address = url.resolve(config.endpoint, `/api/accounts/${config.account}/tasks`)
 
   return {
-    getTasks: machine =>
-      get(address, querystring.stringify({machine: machine && machine.id}))
+    getTasks: () =>
+      get(address)
         .then(response => response.data),
 
-    runTask: ({machine, command, output, taskName, tier}) => {
+    runTask: ({machineName, command, output, taskName, tier}) => {
       const body = {
         command,
         output,
-        machine,
+        machineName,
         taskName,
         tier
       }
