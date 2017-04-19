@@ -16,14 +16,11 @@ tasks.getTasks()
     })
 
     for (const task of response) {
-      let durationString = ''
-      if (task.durationInSeconds) {
-        const duration = moment.duration(task.durationInSeconds, 'seconds')
-        durationString = sprintf('%4d:%02d:%02d', Math.floor(duration.asHours()), duration.minutes(), duration.seconds())
-      }
-      const costString = task.costInCents ? sprintf('$ %6.2f', task.costInCents / 100.0) : ''
+      const duration = moment.duration(task.durationInSeconds || 0, 'seconds')
+      const durationString = sprintf('%4d:%02d:%02d', Math.floor(duration.asHours()), duration.minutes(), duration.seconds())
+      const costString = sprintf('$ %6.3f', (task.costInCents || 0.0) / 100.0)
 
-      table.push([task.name || '', task.machine || '', task.status || '', task.command || '',
+      table.push([task.name || '', task.machineName || '', task.status || '', task.command || '',
         task.tier || '', task.timestamp_initializing || '', costString || '', durationString || ''])
     }
 
