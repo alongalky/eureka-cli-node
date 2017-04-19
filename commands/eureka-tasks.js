@@ -1,4 +1,4 @@
-const config = require('../eureka.config')
+const config = require('../config/config')
 const fs = require('fs')
 const axiosAuth = require('./auth/axios-authenticated')({ config, fs })
 const tasks = require('./tasks/tasks')({
@@ -23,7 +23,7 @@ tasks.getTasks()
       }
       const costString = task.costInCents ? sprintf('$ %6.2f', task.costInCents / 100.0) : ''
 
-      table.push([task.name || '', task.machine || '', task.status || '', task.command || '',
+      table.push([task.name || '', task.machineName || '', task.status || '', task.command || '',
         task.tier || '', task.timestamp_initializing || '', costString || '', durationString || ''])
     }
 

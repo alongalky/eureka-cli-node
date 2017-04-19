@@ -1,5 +1,5 @@
 const program = require('commander')
-const config = require('../eureka.config')
+const config = require('../config/config')
 const fs = require('fs')
 const axiosAuth = require('./auth/axios-authenticated')({ config, fs })
 const tasks = require('./tasks/tasks')({
@@ -9,7 +9,7 @@ const tasks = require('./tasks/tasks')({
 const uuid = require('uuid')
 
 let command
-let machine
+let machineName
 let output
 
 program

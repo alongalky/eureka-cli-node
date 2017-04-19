@@ -1,4 +1,4 @@
-const config = require('../eureka.config')
+const config = require('../config/config')
 const fs = require('fs')
 const axiosAuth = require('./auth/axios-authenticated')({ config, fs })
 const Table = require('cli-table')
