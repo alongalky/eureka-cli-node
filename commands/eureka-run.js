@@ -15,24 +15,24 @@ let output
 program
   .arguments('<machine> <output-folder> <cmd...>')
   .action((m, o, cmd) => {
-    machine = m
+    machineName = m
     output = o
     command = cmd.join(' ')
   })
   .parse(process.argv)
 
-if (!machine || !output || !command) {
+if (!machineName || !output || !command) {
   program.help()
 } else {
   const task = {
-    machine,
+    machineName,
     output,
     command,
     tier: 'n1-standard-1',
     taskName: 'task' + uuid.v4()
   }
 
-  console.log(`Running ${machine} with command ${command}, output folder is ${output}`)
+  console.log(`Running ${machineName} with command ${command}, output folder is ${output}`)
   tasks.runTask(task)
   .then(response => {
     console.log(response)
