@@ -13,7 +13,11 @@ const printError = require('../errors/print-error')
 tasks.getTasks()
   .then(response => {
     const table = new Table({
-      head: ['Task Name', 'Machine', 'Status', 'Command', 'Tier', 'Start Time', 'Cost', 'Duration']
+      head: ['Machine', 'Status', 'Command', 'Tier', 'Cost', 'Duration'],
+      style: {
+        head: ['green'],
+        compact: true
+      }
     })
 
     for (const task of response) {
@@ -21,8 +25,8 @@ tasks.getTasks()
       const durationString = sprintf('%4d:%02d:%02d', Math.floor(duration.asHours()), duration.minutes(), duration.seconds())
       const costString = sprintf('$ %6.3f', (task.costInCents || 0.0) / 100.0)
 
-      table.push([task.name || '', task.machineName || '', task.status || '', task.command || '',
-        task.tier || '', task.timestamp_initializing || '', costString || '', durationString || ''])
+      table.push([task.machineName || '', task.status || '', task.command || '',
+        task.tier || '', costString || '', durationString || ''])
     }
 
     console.log(table.toString())

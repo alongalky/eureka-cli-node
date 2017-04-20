@@ -11,7 +11,11 @@ const printError = require('../errors/print-error')
 machines.getMachines()
   .then(response => {
     const table = new Table({
-      head: ['Machine Name']
+      head: ['Machine Name'],
+      style: {
+        head: ['green'],
+        compact: true
+      }
     })
 
     for (const machine of response) {
