@@ -1,9 +1,13 @@
+const os = require('os')
+const path = require('path')
 const axios = require('axios')
+
+const tokenFileName = path.join(os.homedir(), '.eureka', '.eureka.tok')
 
 module.exports = ({ fs, config }) => {
   const readTokenFile = () => {
-    if (fs.existsSync(config.tokenfile)) {
-      const token = fs.readFileSync(config.tokenfile) || ''
+    if (fs.existsSync(tokenFileName)) {
+      const token = fs.readFileSync(tokenFileName) || ''
       return token.toString()
     } else {
       return null
@@ -11,9 +15,9 @@ module.exports = ({ fs, config }) => {
   }
 
   const writeTokenFile = token => {
-    fs.writeFile(config.tokenfile, token, err => {
+    fs.writeFile(tokenFileName, token, err => {
       if (err) {
-        console.error(`Failed to write token file into ${config.tokenfile}`)
+        console.error(`Failed to write token file into ${tokenFileName}`)
       }
     })
   }
