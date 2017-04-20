@@ -37,7 +37,7 @@ module.exports = ({ fs, config }) => {
 
   // Retry once requests that failed with 401
   axiosAuth.interceptors.response.use(response => response, error => {
-    if (error.response.status === 401 && attemptCount <= 1) {
+    if (error.response && error.response.status === 401 && attemptCount <= 1) {
       return auth().then(validToken => {
         token = validToken
         interceptedRequestConfig.headers.Authorization = validToken

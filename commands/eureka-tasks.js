@@ -8,6 +8,7 @@ const tasks = require('./tasks/tasks')({
 const Table = require('cli-table')
 const moment = require('moment')
 const sprintf = require('sprintf-js').sprintf
+const printError = require('../errors/print-error')
 
 tasks.getTasks()
   .then(response => {
@@ -29,5 +30,5 @@ tasks.getTasks()
 
     console.log(table.toString())
   }).catch(err => {
-    console.error(err)
+    printError(err)
   })

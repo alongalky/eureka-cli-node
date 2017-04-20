@@ -6,6 +6,7 @@ const machines = require('./machines/machines')({
   get: axiosAuth.get,
   config
 })
+const printError = require('../errors/print-error')
 
 machines.getMachines()
   .then(response => {
@@ -19,5 +20,5 @@ machines.getMachines()
 
     console.log(table.toString())
   }).catch(err => {
-    console.error(err)
+    printError(err)
   })
