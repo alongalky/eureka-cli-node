@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "chalk": "^1.1.3",
     "cli-table": "^0.3.1",
     "commander": "^2.9.0",
     "js-yaml": "^3.8.3",

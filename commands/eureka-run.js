@@ -7,6 +7,8 @@ const tasks = require('./tasks/tasks')({
   config
 })
 const uuid = require('uuid')
+const printError = require('../errors/print-error')
+const chalk = require('chalk')
 
 let command
 let machineName
@@ -32,12 +34,11 @@ if (!machineName || !output || !command) {
     taskName: 'task' + uuid.v4()
   }
 
-  console.log(`Running ${machineName} with command ${command}, output folder is ${output}`)
   tasks.runTask(task)
   .then(response => {
-    console.log(response)
+    console.log(`Running ${chalk.blue(machineName)} with command ${chalk.blue(command)}, ` +
+      `output folder is ${chalk.blue(output)}`)
   }).catch(err => {
-    console.log(err.response.data || '')
-    console.error(err.toString())
+    printError(err)
   })
 }
