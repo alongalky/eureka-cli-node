@@ -2,13 +2,12 @@
   "name": "eureka-cli",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "mocha test/**/*.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Eureka",
+  "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.18.0",
