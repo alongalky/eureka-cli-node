@@ -1,5 +1,4 @@
 const url = require('url')
-const querystring = require('querystring')
 
 module.exports = ({get, post, config}) => {
   const address = url.resolve(config.endpoint, `/api/accounts/${config.account}/tasks`)
