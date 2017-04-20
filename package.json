@@ -1,9 +1,13 @@
 {
   "name": "eureka-cli",
   "version": "1.0.2",
-  "description": "",
+  "description": "Command line utility for using Eureka",
   "scripts": {
     "test": "mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alongalky/eureka-cli-node"
   },
   "keywords": [],
   "author": "Eureka",
