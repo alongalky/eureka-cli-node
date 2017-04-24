@@ -17,7 +17,7 @@ try {
 } catch (err) {
   const prefix = chalk.red('ERROR') + ` cannot read config file from ${chalk.blue(filename)}`
   if (err.mark) {
-    // Markdown library error
+    // YAML parse error
     const location = `line ${err.mark.line}, column ${err.mark.column}`
     console.log(prefix + `. Issue with ${location}`)
   } else {
