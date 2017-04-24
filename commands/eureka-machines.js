@@ -11,7 +11,7 @@ const printError = require('../errors/print-error')
 machines.getMachines()
   .then(response => {
     const table = new Table({
-      head: ['Machine Name'],
+      head: ['Machine Name', 'SSH Address', 'SSH port'],
       style: {
         head: ['green'],
         compact: true
@@ -19,7 +19,7 @@ machines.getMachines()
     })
 
     for (const machine of response) {
-      table.push([machine.name || ''])
+      table.push([machine.name || '', machine.ssh_ip || '', machine.ssh_port || ''])
     }
 
     console.log(table.toString())
