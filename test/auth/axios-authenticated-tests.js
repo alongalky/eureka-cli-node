@@ -11,7 +11,7 @@ describe('axios-authenticated', () => {
     endpoint: `http://localhost:${port}/`,
     key: 'Key',
     secret: 'secret',
-    account: 'fake-account',
+    account: 'fake-account'
   }
 
   const getResponse = sinon.stub()
