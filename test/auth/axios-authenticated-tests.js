@@ -2,6 +2,8 @@ const sinon = require('sinon')
 const express = require('express')
 const expect = require('chai').expect
 var http = require('http')
+const os = require('os')
+const path = require('path')
 
 describe('axios-authenticated', () => {
   const port = 5551
@@ -10,7 +12,6 @@ describe('axios-authenticated', () => {
     key: 'Key',
     secret: 'secret',
     account: 'fake-account',
-    tokenfile: './fake-token.txt'
   }
 
   const getResponse = sinon.stub()
@@ -70,13 +71,14 @@ describe('axios-authenticated', () => {
   it('retries once when response is 401', done => {
     getResponse.onFirstCall().returns(401)
     getResponse.onSecondCall().returns(200)
+    const expectedTokenFileName = path.join(os.homedir(), '.eureka', '.eureka.tok')
 
     axiosAuth
       .get(`http://localhost:${port}/`)
       .then(response => {
         expect(response.status).to.equal(200)
         sinon.assert.calledOnce(fs.writeFile)
-        sinon.assert.calledWith(fs.writeFile, config.tokenfile, 'great toke')
+        sinon.assert.calledWith(fs.writeFile, expectedTokenFileName, 'great toke')
         sinon.assert.calledTwice(getResponse)
 
         done()
