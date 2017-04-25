@@ -25,19 +25,20 @@ There are currently 3 supported commands:
 
 1. `eureka machines`: List your machines, along with their SSH information.
 
-1. `eureka run [--tier <tier>] <machine> <output-folder> <command>`
+1. `eureka run [--tier <tier>] <machine> <command>`
      
      This command will duplicate the requested `<machine>` and run the given `<command>` on it. 
-
-     When your task is finished, the `<output-folder>` will be copied and shared with you.
 
      You may also provide a `<tier>` arguments, to specify the size of the machine to clone. For available options see [tiers](./docs/tiers.MD).
 
      ### Example usage
 
-      `eureka run --tier n1-standard-4 my_python_machine /output python /bin/run_sim.py > /output/output1.txt`
+      `eureka run --tier n1-standard-4 my_python_machine python /bin/run_sim.py > /output/output1.txt`
 
       This will clone `my_python_machine` into a new machine of tier `n1-standard-4`, run the command `/bin/run_sim.py`, backup the `/output` folder, and terminate the new machine.
+
+## `/keep` your results!
+Your machine will have a directory called `/keep`. This is the _only_ directory that is not deleted when the task finishes.
 
 ## Pricing
 Eureka charges by the minute for `eureka run` usage. The machine your are given SSH access to is free to use, but is not very powerful, and is meant for development purposes.
