@@ -11,4 +11,4 @@ npm link
 This will remain in effect until you run `npm unlink`.
 
 ## Code policy
-Write unit tests, make sure `eslint .` is clean before sending pull requests to mv.
+Write unit tests, make sure `eslint .` is clean before sending pull requests.
