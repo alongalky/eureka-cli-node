@@ -19,6 +19,8 @@ program
     machineName = m
     command = cmd.join(' ')
   })
+  .option('-t, --tier [tier]', 'Run on machine of type [tier]', 'n1-standard-1')
+
   .parse(process.argv)
 
 if (!machineName || !command) {
@@ -27,7 +29,7 @@ if (!machineName || !command) {
   const task = {
     machineName,
     command,
-    tier: 'n1-standard-1',
+    tier: program.tier,
     taskName: 'task' + uuid.v4()
   }
 
