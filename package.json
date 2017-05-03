@@ -1,6 +1,6 @@
 {
   "name": "eureka-cli",
-  "version": "1.0.6",
+  "version": "1.0.5",
   "description": "Command line utility for using Eureka",
   "scripts": {
     "test": "mocha test/**/*.js"

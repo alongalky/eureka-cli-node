@@ -12,20 +12,23 @@ const chalk = require('chalk')
 
 let command
 let machineName
+let output
 
 program
-  .arguments('<machine> <cmd...>')
-  .action((m, cmd) => {
+  .arguments('<machine> <output-folder> <cmd...>')
+  .action((m, o, cmd) => {
     machineName = m
+    output = o
     command = cmd.join(' ')
   })
   .parse(process.argv)
 
-if (!machineName || !command) {
+if (!machineName || !output || !command) {
   program.help()
 } else {
   const task = {
     machineName,
+    output,
     command,
     tier: 'n1-standard-1',
     taskName: 'task' + uuid.v4()
@@ -33,7 +36,8 @@ if (!machineName || !command) {
 
   tasks.runTask(task)
   .then(response => {
-    console.log(`Running ${chalk.blue(machineName)} with command ${chalk.blue(command)}`)
+    console.log(`Running ${chalk.blue(machineName)} with command ${chalk.blue(command)}, ` +
+      `output folder is ${chalk.blue(output)}`)
   }).catch(err => {
     printError(err)
   })
