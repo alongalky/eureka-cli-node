@@ -21,6 +21,8 @@ program
     output = o
     command = cmd.join(' ')
   })
+  .option('-t, --tier [tier]', 'Run on machine of type [tier]', 'n1-standard-1')
+
   .parse(process.argv)
 
 if (!machineName || !output || !command) {
@@ -30,7 +32,7 @@ if (!machineName || !output || !command) {
     machineName,
     output,
     command,
-    tier: 'n1-standard-1',
+    tier: program.tier,
     taskName: 'task' + uuid.v4()
   }
 
