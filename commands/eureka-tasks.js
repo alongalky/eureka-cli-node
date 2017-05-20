@@ -13,7 +13,7 @@ const printError = require('../errors/print-error')
 tasksApi.getTasks()
   .then(tasks => {
     const table = new Table({
-      head: ['Machine', 'Status', 'Command', 'Tier', 'Cost', 'Duration'],
+      head: ['Machine', 'Status', 'Command', 'Tier', 'Cost', 'Duration', 'Name'],
       style: {
         head: ['green'],
         compact: true
@@ -28,7 +28,7 @@ tasksApi.getTasks()
       const costString = sprintf('$ %6.3f', (task.costInCents || 0.0) / 100.0)
 
       table.push([task.machineName || '', task.status || '', task.command || '',
-        task.tier || '', costString || '', durationString || ''])
+        task.tier || '', costString || '', durationString || '', task.name || ''])
     }
 
     console.log(table.toString())
