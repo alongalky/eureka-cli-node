@@ -44,10 +44,12 @@ tasksApi.getTasks()
       }
     }
 
-    const totalCost = tasks.reduce((acc, task) => acc + (task.costInCents || 0.0) / 100.0, 0)
-
     console.log(table.toString())
-    console.log('Estimated Total Cost: %s', sprintf('$ %6.3f', totalCost))
+
+    if (program.costs) {
+      const totalCost = tasks.reduce((acc, task) => acc + (task.costInCents || 0.0) / 100.0, 0)
+      console.log('Estimated Total Cost: %s', sprintf('$ %6.3f', totalCost))
+    }
   }).catch(err => {
     printError(err)
   })
