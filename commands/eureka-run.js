@@ -28,7 +28,7 @@ program
 if (!machineName || !command) {
   program.help()
 } else if (!program.name.match(/^[a-z0-9][-a-z0-9]{0,50}[a-z0-9]$/)) {
-  console.error(chalk.red('ERROR'), 'Invalid task name, only lowercase alphanumeric characters allowed')
+  printError('Invalid task name, only lowercase alphanumeric characters allowed')
 } else {
   const task = {
     machineName,

@@ -16,6 +16,9 @@ module.exports = err => {
     }
   } else if (err.errno === 'ECONNREFUSED') {
     message = `Failed to connect to Eureka server at: ${chalk.blue(err.address)}`
+  } else if (typeof err === 'string') {
+    // For custom error messages
+    message = err
   } else {
     message = chalk.blue('Unkown error. Please contact Eureka support and provide the following error information:') +
       err.toString()
