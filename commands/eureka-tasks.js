@@ -17,9 +17,9 @@ program
 
 tasksApi.getTasks()
   .then(tasks => {
-    const head = program.costs ?
-      ['Machine', 'Status', 'Command', 'Tier', 'Cost', 'Duration', 'Name'] :
-      ['Machine', 'Status', 'Command', 'Tier', 'Duration', 'Name']
+    const head = program.costs
+     ? ['Machine', 'Status', 'Command', 'Tier', 'Cost', 'Duration', 'Name']
+     : ['Machine', 'Status', 'Command', 'Tier', 'Duration', 'Name']
     const table = new Table({
       head,
       style: {

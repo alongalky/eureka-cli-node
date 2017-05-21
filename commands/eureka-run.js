@@ -7,7 +7,6 @@ const tasks = require('./tasks/tasks')({
   post: axiosAuth.post,
   config
 })
-const uuid = require('uuid')
 const printError = require('../errors/print-error')
 const chalk = require('chalk')
 
