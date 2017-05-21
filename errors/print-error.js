@@ -21,5 +21,5 @@ module.exports = err => {
       err.toString()
   }
 
-  console.log(chalk.red('ERROR'), message)
+  console.error(chalk.red('ERROR'), message)
 }
