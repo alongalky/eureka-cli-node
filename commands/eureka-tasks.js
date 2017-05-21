@@ -18,8 +18,8 @@ program
 tasksApi.getTasks()
   .then(tasks => {
     const head = program.costs ?
-      ['Machine', 'Status', 'Command', 'Tier', 'Cost', 'Duration'] :
-      ['Machine', 'Status', 'Command', 'Tier', 'Duration']
+      ['Machine', 'Status', 'Command', 'Tier', 'Cost', 'Duration', 'Name'] :
+      ['Machine', 'Status', 'Command', 'Tier', 'Duration', 'Name']
     const table = new Table({
       head,
       style: {
@@ -37,10 +37,10 @@ tasksApi.getTasks()
         const costString = sprintf('$ %6.3f', (task.costInCents || 0.0) / 100.0)
 
         table.push([task.machineName || '', task.status || '', task.command || '',
-          task.tier || '', costString || '', durationString || ''])
+          task.tier || '', costString || '', durationString || '', task.name || ''])
       } else {
         table.push([task.machineName || '', task.status || '', task.command || '',
-          task.tier || '', durationString || ''])
+          task.tier || '', durationString || '', task.name || ''])
       }
     }
 
