@@ -16,14 +16,13 @@ program
   .action(t => {
     taskName = t
   })
-
   .parse(process.argv)
 
 if (!taskName) {
   program.help()
 } else {
   tasks.killTask(taskName)
-  .then(response =>
+  .then(() =>
     console.log(`Task matching ${chalk.blue(taskName)} killed successfully`)
   ).catch(err => printError(err))
 }

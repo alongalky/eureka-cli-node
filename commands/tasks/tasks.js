@@ -18,12 +18,8 @@ module.exports = ({get, post, put, config}) => {
       }
 
       return post(address, body)
-        .then(response => 'Response: Task queued successfully')
     },
 
-    killTask: taskName => {
-      return put(address, { task_name: taskName })
-        .then(response => 'Response: Task killed successfully')
-    }
+    killTask: taskName => put(address, { task_name: taskName })
   }
 }

@@ -62,11 +62,25 @@ describe('tasks', () => {
           done()
         }).catch(err => done(err))
     })
-    it('returns success message on happy flow', done => {
-      const expectedResponse = 'Response: Task queued successfully'
-      runTask(args)
+  })
+  describe('killTask', () => {
+    const put = sinon.stub()
+    const killTask = tasks({put, config}).killTask
+
+    const args = {
+      taskName: 'silly-name'
+    }
+
+    beforeEach(() => {
+      put.reset()
+      put.returns(Promise.resolve({}))
+    })
+
+    it('calls the correct url', done => {
+      const expectedUrl = 'http://fake.com/api/accounts/fake-account/tasks'
+      killTask(args)
         .then(response => {
-          assert.equal(response, expectedResponse)
+          sinon.assert.calledWith(put, expectedUrl)
           done()
         }).catch(err => done(err))
     })

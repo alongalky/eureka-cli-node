@@ -21,7 +21,6 @@ program
   })
   .option('-t, --tier [tier]', 'Run on machine of type [tier]', 'n1-standard-1')
   .option('-n, --name [name]', 'Assign a name to the task', names.getRandomName().replace(/_/g, '-'))
-
   .parse(process.argv)
 
 if (!machineName || !command) {
@@ -37,7 +36,7 @@ if (!machineName || !command) {
   }
 
   tasks.runTask(task)
-  .then(response => {
+  .then(() => {
     console.log(`Running ${chalk.blue(machineName)} with command ${chalk.blue(command)}`)
   }).catch(err => {
     printError(err)
