@@ -1,6 +1,6 @@
 const url = require('url')
 
-module.exports = ({get, post, config}) => {
+module.exports = ({get, post, put, config}) => {
   const address = url.resolve(config.endpoint, `/api/accounts/${config.account}/tasks`)
 
   return {
@@ -18,7 +18,8 @@ module.exports = ({get, post, config}) => {
       }
 
       return post(address, body)
-        .then(response => 'Response: Task queued successfully')
-    }
+    },
+
+    killTask: taskName => put(address, { task_name: taskName })
   }
 }

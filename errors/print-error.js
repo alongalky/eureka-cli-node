@@ -7,6 +7,7 @@ module.exports = err => {
       case 401:
         message = err.response.data.message
         break
+      case 400:
       case 404:
       case 422:
         message = err.response.data
