@@ -67,20 +67,18 @@ describe('tasks', () => {
     const put = sinon.stub()
     const killTask = tasks({put, config}).killTask
 
-    const args = {
-      taskName: 'silly-name'
-    }
+    const taskName = 'silly-name'
 
     beforeEach(() => {
       put.reset()
       put.returns(Promise.resolve({}))
     })
 
-    it('calls the correct url', done => {
+    it('calls the correct url and JSON', done => {
       const expectedUrl = 'http://fake.com/api/accounts/fake-account/tasks'
-      killTask(args)
+      killTask(taskName)
         .then(response => {
-          sinon.assert.calledWith(put, expectedUrl)
+          sinon.assert.calledWith(put, expectedUrl, { task_name: 'silly-name' })
           done()
         }).catch(err => done(err))
     })
