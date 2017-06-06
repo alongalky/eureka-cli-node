@@ -19,7 +19,6 @@ program
     machineName = m
     command = cmd.join(' ')
   })
-  .option('-t, --tier [tier]', 'Run on machine of type [tier]', 'n1-standard-1')
   .option('-n, --name [name]', 'Assign a name to the task', names.getRandomName().replace(/_/g, '-'))
   .parse(process.argv)
 
@@ -31,7 +30,7 @@ if (!machineName || !command) {
   const task = {
     machineName,
     command,
-    tier: program.tier,
+    tier: 'n1-standard-1',
     taskName: program.name
   }
 
