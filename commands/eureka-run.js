@@ -15,7 +15,7 @@ let machineName
 
 program
   .arguments('<cmd...>')
-  .action((m, cmd) => {
+  .action(cmd => {
     command = cmd.join(' ')
   })
   .option('-n, --name [name]', 'Assign a name to the task', names.getRandomName().replace(/_/g, '-'))
