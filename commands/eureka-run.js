@@ -11,7 +11,6 @@ const printError = require('../errors/print-error')
 const chalk = require('chalk')
 
 let command
-let machineName
 
 program
   .arguments('<cmd...>')
@@ -35,7 +34,7 @@ if (!command) {
 
   tasks.runTask(task)
   .then(() => {
-    console.log(`Running ${chalk.blue(machineName)} with command ${chalk.blue(command)}`)
+    console.log(`Running command ${chalk.green(command)}`)
   }).catch(err => {
     printError(err)
   })
