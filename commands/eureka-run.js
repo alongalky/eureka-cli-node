@@ -28,6 +28,7 @@ if (!command) {
   const task = {
     machineName: 'machina',
     command,
+    workingDirectory: process.cwd(),
     tier: 'n1-standard-1',
     taskName: program.name
   }

@@ -8,9 +8,10 @@ module.exports = ({get, post, put, config}) => {
       get(address)
         .then(response => response.data),
 
-    runTask: ({machineName, command, output, taskName, tier}) => {
+    runTask: ({machineName, command, workingDirectory, output, taskName, tier}) => {
       const body = {
         command,
+        workingDirectory,
         output,
         machineName,
         taskName,
