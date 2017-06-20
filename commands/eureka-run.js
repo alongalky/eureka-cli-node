@@ -17,6 +17,7 @@ program
   .action(cmd => {
     command = cmd.join(' ')
   })
+  .option('-t, --tier [tier]', 'Run on machine of type [tier]', 'n1-standard-1')
   .option('-n, --name [name]', 'Assign a name to the task', names.getRandomName().replace(/_/g, '-'))
   .parse(process.argv)
 
@@ -29,7 +30,7 @@ if (!command) {
     machineName: 'machina',
     command,
     workingDirectory: process.cwd(),
-    tier: 'n1-standard-1',
+    tier: program.tier,
     taskName: program.name
   }
 
