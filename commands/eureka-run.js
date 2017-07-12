@@ -21,7 +21,9 @@ program
   .option('-n, --name [name]', 'Assign a name to the task', names.getRandomName().replace(/_/g, '-'))
 
 program.on('--help', () => {
+  console.log('')
   console.log('  For a list of available tiers and prices https://github.com/alongalky/eureka-cli-node/blob/master/docs/tiers.MD')
+  console.log('')
 })
 
   .parse(process.argv)
