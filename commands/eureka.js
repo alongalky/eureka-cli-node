@@ -3,7 +3,7 @@
 const program = require('commander')
 
 program
-  .version('1.0.15')
+  .version('1.0.16')
   .command('run', 'Run a command')
   .command('tasks', 'Get running tasks')
   .command('kill', 'Kill a running task')
