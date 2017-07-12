@@ -7,4 +7,5 @@ program
   .command('run', 'Run a command')
   .command('tasks', 'Get running tasks')
   .command('kill', 'Kill a running task')
+  .command('help', 'Display help', { isDefault: true })
   .parse(process.argv)
