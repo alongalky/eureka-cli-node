@@ -31,6 +31,10 @@ There are currently 3 supported commands:
 
      You may also provide a `<tier>` arguments, to specify the size of the machine to clone. For available options see [tiers](./docs/tiers.MD).
 
+1. `eureka kill <task-name>`
+
+     This command will kill a running or initializing task.
+
 ### Watch the logs
 Unless specified otherwise in the command issued to `eureka run`, Eureka will redirect output and errors streams of each task to a dedicated file under `/keep/eureka-logs`.
 Eureka makes sure that the tasks flushes to the logfiles at least every 10 seconds.
