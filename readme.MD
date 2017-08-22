@@ -8,19 +8,10 @@ This is the CLI interface for Eureka, written in Node.js.
 ### Main idea
 When joining Eureka, you are given control over a cloud virtual machine (through SSH). You can install your code on it, compile it, and test it.
 
-Once you are happy with your environment, you may run the [eureka-run](#commands) command. This will create a beefier version of your machine, run your command, backup the results, and terminate the new machine when done.
-
-## Install
-1. Install [Node](https://nodejs.org/). Make sure it works by running `npm --version` in a terminal.
-1. Run `npm install -g eureka-cli`. Test the installation by running `eureka --version`.
-1. During on-boarding, you should receive a configuration file called `eureka.config.yaml`. Copy it to the following location:
-
-    * _Windows_: `C:\Users\YourUserName\.eureka\eureka.config.yaml`
-    * _Linux/Mac_: `~/eureka/eureka.config.yaml`
-1. Run `eureka machines`. You should see your assigned machine(s) names and SSH address.
+Once you are happy with your environment, you may run the [eureka-run](#commands) command. This will create a beefier version of your machine, run your command, backup the results, and terminate the new machine when done. For full documentation, please start [here](docs/intro.MD).
 
 ## Commands
-There are currently 3 supported commands:
+There are currently 4 supported commands:
 1. `eureka tasks`: List your tasks.
 
 1. `eureka machines`: List your machines, along with their SSH information.
@@ -36,8 +27,9 @@ There are currently 3 supported commands:
      This command will kill a running or initializing task.
 
 ### Watch the logs
-Unless specified otherwise in the command issued to `eureka run`, Eureka will redirect output and errors streams of each task to a dedicated file under `/keep/eureka-logs`.
-Eureka makes sure that the tasks flushes to the logfiles at least every 10 seconds.
+Unless specified otherwise in the command issued to `eureka run`, Eureka will redirect the output and errors streams of each task to a dedicated file under `/keep/eureka-logs`. 
+
+Log files are flushed at every 10 seconds.
 
 ## Example usage
 
