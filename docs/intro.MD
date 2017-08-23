@@ -37,4 +37,4 @@ You can see the full pricing table [here](tiers.MD). The cost is roughly $0.055 
 
 We want your time on Eureka to be fun and productive, and we are happy to provide you with email and phone support. We are also happy to help with any installations and setting up: just tell us what you need.
 
-If you want to get an account and try out Eureka, write *alon@eureka.guru*. If you have technical issues or questions, write *andrea@eureka.guru*.
+If you want to get an account and try out Eureka, write *alon [ at ] eureka.guru*. If you have technical issues or questions, write *andrea [ at ] eureka.guru*.

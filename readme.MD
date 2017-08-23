@@ -3,7 +3,7 @@ This is the CLI interface for Eureka, written in Node.js.
 
 ## Overview
 ### Eureka?
-[Eureka](http://eureka.guru) is a platform for deploying CPU heavy tasks quickly and painlessly on the cloud. It is currently in early Beta stages. If you wish to try it out, don't hesitate to [contact us](alon+andrea@eureka.guru).
+[Eureka](http://eureka.guru) is a platform for deploying CPU heavy tasks quickly and painlessly on the cloud. It is currently in early Beta stages. If you wish to try it out, don't hesitate to [contact us](alon+andrea [ at ] eureka.guru).
 
 ### Main idea
 When joining Eureka, you are given control over a cloud virtual machine (through SSH). You can install your code on it, compile it, and test it.

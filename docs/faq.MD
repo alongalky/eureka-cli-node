@@ -2,7 +2,7 @@
 
 * *How can I access Eureka?*
 
-     Write an email to *alon@eureka.guru*, give us your name, and we'll reply shortly with login information.
+     Write an email to *alon [ at ] eureka.guru*, give us your name, and we'll reply shortly with login information.
 
 * *Does Eureka support proprietary, commercially-licensed software?*
 
